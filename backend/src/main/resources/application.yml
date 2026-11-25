@@ -1,0 +1,77 @@
+spring:
+  application:
+    name: zevora
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://127.0.0.1:5433/zevora}
+    username: ${DB_USERNAME:zevora}
+    password: ${DB_PASSWORD:zevora_dev}
+    hikari:
+      maximum-pool-size: 12
+      minimum-idle: 2
+      connection-timeout: 5000
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+        format_sql: false
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: false
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    default-property-inclusion: non_null
+  cache:
+    type: simple
+  data:
+    redis:
+      host: ${REDIS_HOST:127.0.0.1}
+      port: ${REDIS_PORT:6379}
+      repositories:
+        enabled: false
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 12MB
+
+server:
+  port: ${SERVER_PORT:8080}
+  error:
+    include-message: never
+    include-stacktrace: never
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: never
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /v3/api-docs
+
+app:
+  jwt-secret: ${JWT_SECRET:zevora-dev-secret-change-me-please-0123456789-abcdefghijklmnopqrstuvwxyz}
+  access-token-minutes: ${ACCESS_TOKEN_MINUTES:60}
+  refresh-token-days: ${REFRESH_TOKEN_DAYS:30}
+  cors-origins: ${CORS_ORIGINS:http://localhost:5173,http://127.0.0.1:5173,http://localhost:19006,http://localhost:8081}
+  dev-mode: ${DEV_MODE:true}
+  seed-demo: ${SEED_DEMO:true}
+  platform-fee-percent: ${PLATFORM_FEE_PERCENT:5}
+  support-email: ${SUPPORT_EMAIL:support@zevora.in}
+
+logging:
+  level:
+    root: INFO
+    com.zevora: INFO
+    org.hibernate.SQL: WARN

@@ -1,0 +1,32 @@
+# Environment & secrets
+.env
+.env.local
+*.local
+
+# Java / Maven
+backend/target/
+*.class
+*.log
+.mvn/
+
+# Node
+node_modules/
+dist/
+build/
+web/node_modules/
+web/dist/
+mobile/node_modules/
+mobile/.expo/
+mobile/dist/
+
+# Local database & runtime data
+.local/
+pgdata/
+*.pid
+*.png
+
+# IDE
+.idea/
+.vscode/
+*.iml
+.DS_Store

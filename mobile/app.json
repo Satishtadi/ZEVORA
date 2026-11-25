@@ -1,0 +1,49 @@
+{
+  "expo": {
+    "name": "ZEVORA",
+    "slug": "zevora",
+    "scheme": "zevora",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "in.zevora.mobile",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "ZEVORA uses your location to attach coordinates to SOS alerts and incident reports."
+      }
+    },
+    "android": {
+      "package": "in.zevora.mobile",
+      "adaptiveIcon": {
+        "backgroundColor": "#0b1020",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-secure-store",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "ZEVORA uses your location to attach coordinates to SOS alerts and incident reports."
+        }
+      ],
+      "expo-font"
+    ],
+    "extra": {
+      "brand": "ZEVORA",
+      "city": "Hyderabad"
+    }
+  }
+}
